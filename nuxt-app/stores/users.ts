@@ -16,8 +16,9 @@ export const useUsers = defineStore('users', () => {
     }
 
     const addLike = (id: number) => {
-        allUsers.value[id].rating += 0.1
-        console.log(allUsers.value[id].rating)
+        console.log(id)
+        console.log(allUsers.value)
+        allUsers.value[id].rating += 5
     }
 
     return {

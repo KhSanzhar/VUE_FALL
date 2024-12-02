@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {useUsers} from "~/stores/users";
 
 const store = useUsers()
 
@@ -59,6 +58,8 @@ const paginatedUsers = computed(() => {
   return usersByCategory.value.slice(startIndex, startIndex + 4)
 })
 
+
+
 watch(selectedCategory, () => {
   currentPage.value = 1
   sorted.value = false
@@ -95,6 +96,7 @@ watch(selectedCategory, () => {
               <span class="text-5xl">{{ currentPage }}/{{ totalPages }}</span>
             </div>
           </div>
+          <pre>{{store.allUsers[0].rating}}</pre>
           <div class="grid grid-rows-2 grid-cols-2 gap-[55px]">
             <post-card
               v-for="(post, i) in paginatedUsers"
@@ -102,6 +104,7 @@ watch(selectedCategory, () => {
               :user="post"
               @like="store.addLike(post.id)"
             />
+            asdasd
           </div>
         </div>
       </div>

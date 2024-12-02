@@ -1,6 +1,6 @@
 export const users = [
     {
-        id: 1,
+        id: 0,
         name: "Mark Twen",
         avatar: "avatar-male.png",
         pubDate: "Today, 12:00",
