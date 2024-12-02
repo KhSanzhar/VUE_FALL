@@ -6,16 +6,12 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'like', id: number): void
+  (e: 'like'): void
 }>()
 
 const fullStars = computed(() => Math.floor(props.user.rating));
 const hasHalfStar = computed(() => props.user.rating % 1 >= 0.5);
 const emptyStars = computed(() => 5 - fullStars.value - (hasHalfStar.value ? 1 : 0));
-
-const handleLike = () => {
-  emit('like', props.user.id)
-}
 </script>
 
 <template>
@@ -66,7 +62,7 @@ const handleLike = () => {
     <div class="flex justify-end mt-4">
       <button
           class="bg-[#43EF27] h-8 px-5 rounded-lg text-white font-semibold hover:bg-[#33cc21]"
-          @click="handleLike"
+          @click="emit('like')"
       >
         LIKE
       </button>

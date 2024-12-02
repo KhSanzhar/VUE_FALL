@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {useUsers} from "~/stores/users";
-import type {User} from "~/types/user";
 
 const store = useUsers()
 
@@ -60,11 +59,6 @@ const paginatedUsers = computed(() => {
   return usersByCategory.value.slice(startIndex, startIndex + 4)
 })
 
-const addLike = (id: number) => {
-  store.allUsers[id].rating += 0.1
-  store.$patch()
-}
-
 watch(selectedCategory, () => {
   currentPage.value = 1
   sorted.value = false
@@ -72,10 +66,10 @@ watch(selectedCategory, () => {
 </script>
 
 <template>
-  <div class="w-screen h-screen bg-cover bg-center bg-[url('/bg-img/bg.png')] relative">
+  <div class="w-screen h-full bg-cover bg-center bg-[url('/bg-img/bg.png')] relative">
     <a-header class="absolute top-2" @open-modal="isOpen = true" />
     <div class="flex justify-center">
-      <div class="bg-[url('/bg-img/img.png')] w-[1300px] h-[1100px] bg-cover bg-center mt-20">
+      <div class="bg-[url('/bg-img/img.png')] w-[1300px] h-[1000px] bg-cover bg-center mt-20">
         <div class="flex flex-col gap-10 py-16 px-8">
           <div class="bg-[#5BB9CD] w-fit rounded-lg px-5">
             <span class="text-white text-4xl">{{ date }}</span>
@@ -106,7 +100,7 @@ watch(selectedCategory, () => {
               v-for="(post, i) in paginatedUsers"
               :key="i"
               :user="post"
-              @click="addLike(post.id)"
+              @like="store.addLike(post.id)"
             />
           </div>
         </div>

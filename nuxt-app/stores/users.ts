@@ -15,9 +15,15 @@ export const useUsers = defineStore('users', () => {
         return users.sort((a, b) => b.rating - a.rating)
     }
 
+    const addLike = (id: number) => {
+        allUsers.value[id].rating += 0.1
+        console.log(allUsers.value[id].rating)
+    }
+
     return {
         allUsers,
         getUsersByCategory,
         sortUsersByRating,
+        addLike
     }
 })

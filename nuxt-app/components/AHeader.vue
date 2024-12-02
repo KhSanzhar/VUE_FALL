@@ -15,8 +15,5 @@ const showPopup = ref(false)
     >
       <nuxt-img src="/header/user.png" class="m-auto w-[36px] h-[38px]" />
     </div>
-    <div>
-
-    </div>
   </header>
 </template>
